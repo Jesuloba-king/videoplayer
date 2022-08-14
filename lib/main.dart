@@ -35,7 +35,6 @@ class  VideoPlayerScreen extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     late VideoPlayerController _controller;
-  // late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
@@ -82,7 +81,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         },
         child: Icon(
           _controller.value.isPlaying? Icons.pause :Icons.play_arrow,
+          size: 40,
         ),
+        //play icon
       ),
     );
   }
