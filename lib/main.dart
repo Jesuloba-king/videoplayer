@@ -82,8 +82,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         child: Icon(
           _controller.value.isPlaying? Icons.pause :Icons.play_arrow,
           size: 40,
-        ),
-        //play icon
+        ), //play icon added to start video and pause icon to pause video
       ),
     );
   }
