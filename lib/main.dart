@@ -1,3 +1,4 @@
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
@@ -34,7 +35,7 @@ class  VideoPlayerScreen extends StatefulWidget {
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-    late VideoPlayerController _controller;
+     late VideoPlayerController _controller;
 
   @override
   void initState() {
@@ -42,7 +43,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     _controller = VideoPlayerController.network(
       'https://cdn.trendybeatz.com/video/Simi-Logba-Logba-Video-(TrendyBeatz.com).mp4',
     )..initialize().then((_) {
-      // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+      // Ensure the first frame is shown after the video is initialized,
+      // even before the play button has been pressed.
       setState(() {});
     });
   }
@@ -67,10 +69,28 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         ),
         backgroundColor: Colors.lightGreen,
       ),
-      body: Center(
-        child: _controller.value.isInitialized?
-        AspectRatio(aspectRatio: _controller.value.aspectRatio,
-        child: VideoPlayer(_controller),): Container(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 100),
+            child: _controller.value.isInitialized?
+            AspectRatio(aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(_controller),): Container(),
+          ),
+          SizedBox(height: 30,),
+          Text("Playing:", textAlign: TextAlign.center,
+            style: GoogleFonts.robotoMono(
+              color: Colors.black, fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),),
+          Text("Simi - Logba Logba",
+            textAlign: TextAlign.center,
+            style: GoogleFonts.robotoMono(
+            color: Colors.black, fontWeight: FontWeight.bold,
+            fontSize: 30,
+          ),),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
